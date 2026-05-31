@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <meta name="description" content="متجر عطرك - أفخم العطور الأصلية" />
+    <title>عطرك | متجر عطور متجاوب</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><rect width='100%' height='100%' fill='%23d4af37'/><text x='50%' y='55%' font-size='24' text-anchor='middle' fill='%230a0a0a' font-family='Tajawal'>عط</text></svg>"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">عطرك ✨</div>
+        <button
+          class="menu-toggle"
+          onclick="document.querySelector('nav').classList.toggle('active')"
+        >
+          <i class="fa fa-bars"></i>
+        </button>
+        <nav>
+          <a href="#home" class="active">الرئيسية</a>
+          <a href="#products">المنتجات</a>
+          <a href="#features">مميزاتنا</a>
+          <a href="#about">من نحن</a>
+          <a href="#contact">تواصل</a>
+        </nav>
+        <div class="header-actions">
+          <div class="search-box">
+            <i class="fa fa-search"></i>
+            <input type="text" id="searchInput" placeholder="ابحث..." />
+          </div>
+          <button class="cart-btn" onclick="toggleCart()">
+            <i class="fa fa-shopping-bag"></i> <span id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <h1>عطر يعبر عن شخصيتك</h1>
+        <p>
+          مجموعة حصرية من أفخم العطور العالمية الأصلية 100% مع ضمان الاسترجاع
+        </p>
+        <div class="btn-group">
+          <button
+            class="btn"
+            onclick="
+              document
+                .getElementById('products')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            تسوق الآن
+          </button>
+          <button
+            class="btn btn-outline"
+            onclick="
+              document
+                .getElementById('about')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            اعرف أكثر
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="features">
+          <div class="feature">
+            <i class="fa fa-certificate"></i>
+            <h3>أصلية 100%</h3>
+            <p>ضمان استرجاع كامل 7 أيام</p>
+          </div>
+          <div class="feature">
+            <i class="fa fa-truck-fast"></i>
+            <h3>شحن سريع</h3>
+            <p>توصيل 2-3 أيام</p>
+          </div>
+          <div class="feature">
+            <i class="fa fa-shield-halved"></i>
+            <h3>دفع آمن</h3>
+            <p>طرق دفع مشفرة</p>
+          </div>
+          <div class="feature">
+            <i class="fa fa-headset"></i>
+            <h3>دعم 24/7</h3>
+            <p>خدمة عملاء جاهزة</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="any-perfume">
+      <div class="container">
+        <div class="section-title">
+          <h2>أي عطر تفضّل؟</h2>
+          <p>اضغط على صورة لتبدأ التصفية واكتشاف مجموعة العطور</p>
+        </div>
+        <div class="any-grid">
+          <div
+            class="any-card"
+            onclick="
+              filterProducts('رجالي');
+              document
+                .getElementById('products')
+                .scrollIntoView({ behavior: 'smooth' });
+            "
+          >
+            <img
+              src="https://picsum.photos/500/400?random=21"
+              alt="عطور رجالية"
+            />
+            <h4>رجالي</h4>
+          </div>
+          <div
+            class="any-card"
+            onclick="
+              filterProducts('نسائي');
+              document
+                .getElementById('products')
+                .scrollIntoView({ behavior: 'smooth' });
+            "
+          >
+            <img
+              src="https://picsum.photos/500/400?random=22"
+              alt="عطور نسائية"
+            />
+            <h4>نسائي</h4>
+          </div>
+          <div
+            class="any-card"
+            onclick="
+              filterProducts('عود');
+              document
+                .getElementById('products')
+                .scrollIntoView({ behavior: 'smooth' });
+            "
+          >
+            <img
+              src="https://picsum.photos/500/400?random=23"
+              alt="عود وبخور"
+            />
+            <h4>عود وبخور</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products">
+      <div class="container">
+        <div class="section-title">
+          <h2>تشكيلتنا المميزة</h2>
+          <p>أفضل العطور الرجالية والنسائية</p>
+        </div>
+
+        <div class="filters">
+          <button
+            class="filter-btn active"
+            onclick="filterProducts('all', this)"
+          >
+            الكل
+          </button>
+          <button class="filter-btn" onclick="filterProducts('رجالي', this)">
+            رجالي
+          </button>
+          <button class="filter-btn" onclick="filterProducts('نسائي', this)">
+            نسائي
+          </button>
+          <button class="filter-btn" onclick="filterProducts('عود', this)">
+            عود وبخور
+          </button>
+        </div>
+
+        <div class="grid" id="productsGrid"></div>
+      </div>
+    </section>
+
+    <section id="about" style="background: #fff">
+      <div class="container about-grid">
+        <div>
+          <h2 style="font-size: clamp(28px, 4vw, 38px); margin-bottom: 20px">
+            قصتنا مع العطور
+          </h2>
+          <p
+            style="
+              line-height: 1.9;
+              font-size: clamp(16px, 1.9vw, 17px);
+              color: var(--gray);
+              margin-bottom: 20px;
+            "
+          >
+            بدأنا في 2020 بشغف واحد: نجلب لك أفضل العطور من حول العالم. نتعامل
+            مباشرة مع الموزعين المعتمدين لنضمن لك الأصالة والجودة.
+          </p>
+          <button class="btn" onclick="showToast('تواصل معنا عبر واتساب')">
+            تواصل معنا
+          </button>
+        </div>
+        <img src="https://picsum.photos/600/500?random=88" alt="عن المتجر" />
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title"><h2>تواصل معنا</h2></div>
+        <div class="contact-grid">
+          <form onsubmit="submitForm(event)">
+            <input required placeholder="الاسم الكامل" />
+            <input type="email" required placeholder="البريد الإلكتروني" />
+            <textarea
+              required
+              placeholder="رسالتك"
+              style="height: 140px"
+            ></textarea>
+            <button class="btn" style="width: 100%">إرسال الرسالة</button>
+          </form>
+          <div>
+            <h3
+              style="margin-bottom: 20px; font-size: clamp(20px, 2.5vw, 24px)"
+            >
+              معلومات التواصل
+            </h3>
+            <p style="margin: 15px 0">
+              <i
+                class="fa fa-phone"
+                style="color: var(--gold); margin-left: 10px"
+              ></i>
+              0968295016
+            </p>
+            <p style="margin: 15px 0">
+              <i
+                class="fa fa-envelope"
+                style="color: var(--gold); margin-left: 10px"
+              ></i>
+              mozamilsalah123@gmail.com
+            </p>
+            <button
+              class="btn"
+              style="margin-top: 20px; width: 100%"
+              onclick="window.open('https://wa.me/0968295016')"
+            >
+              <i class="fa-brands fa-whatsapp"></i> اطلب عبر واتساب
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal" id="productModal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-img"><img id="modalImg" src="" alt="" /></div>
+        <div>
+          <h2 id="modalName" style="font-size: clamp(24px, 3.5vw, 32px)"></h2>
+          <div class="stars" id="modalStars"></div>
+          <p class="price" id="modalPrice"></p>
+          <p
+            id="modalDesc"
+            style="
+              line-height: 1.8;
+              color: var(--gray);
+              margin: 20px 0;
+              font-size: clamp(15px, 1.8vw, 17px);
+            "
+          ></p>
+          <div
+            style="display: flex; gap: 15px; margin-top: 30px; flex-wrap: wrap"
+          >
+            <button
+              class="btn"
+              style="flex: 1; min-width: 150px"
+              onclick="addToCartFromModal()"
+            >
+              أضف للسلة
+            </button>
+            <button
+              class="btn btn-outline"
+              style="flex: 1; min-width: 150px"
+              onclick="orderWhatsApp()"
+            >
+              طلب سريع
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cartPanel">
+      <div class="cart-header">
+        <h3 style="font-size: clamp(20px, 2.5vw, 24px)">سلة المشتريات</h3>
+        <span style="font-size: 30px; cursor: pointer" onclick="toggleCart()"
+          >&times;</span
+        >
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+      <div class="cart-footer">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: clamp(18px, 2.2vw, 20px);
+            font-weight: 700;
+          "
+        >
+          <span>الإجمالي:</span>
+          <span><span id="cartTotal">0</span> ريال</span>
+        </div>
+        <button class="btn" style="width: 100%" onclick="checkout()">
+          إتمام الشراء
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h4>عطرك</h4>
+            <p style="font-size: clamp(14px, 1.6vw, 15px)">
+              متجرك الأول للعطور الأصلية
+            </p>
+            <div class="social-icons">
+              <a
+                href="https://facebook.com/mozamilsalah123"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+              <a href="https://wa.me/0968295016" target="_blank" rel="noopener">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+              <a
+                href="https://github.com/mozamilsalah"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a
+                href="https://linkedin.com/in/mozamilsalah"
+                target="_blank"
+                rel="noopener"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h4>روابط سريعة</h4>
+            <a href="#products">المنتجات</a>
+            <a href="#about">من نحن</a>
+            <a href="#">سياسة الاسترجاع</a>
+          </div>
+          <div>
+            <h4>الأقسام</h4>
+            <a href="#">عطور رجالية</a>
+            <a href="#">عطور نسائية</a>
+            <a href="#">عود وبخور</a>
+          </div>
+        </div>
+        <div class="copyright">
+          © 2026 عطرك. جميع الحقوق محفوظة | تصميم متجاوب 100%
+        </div>
+      </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
